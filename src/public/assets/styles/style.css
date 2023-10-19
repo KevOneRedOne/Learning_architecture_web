@@ -1,0 +1,55 @@
+:root {
+    --color-border: #eaeaea;
+    --color-primary: #615f5f;
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Space Grotesk', sans-serif;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: 400;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-secondary);
+}
+
+.header__main {
+    padding: 20px ;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header__main .logo {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 15px;
+    color: var(--color-primary);
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    grid-auto-rows: minmax(100px, auto);
+}
+
+.grid .item {
+    border-bottom: 1px solid var(--color-border);
+    padding: 20px;
+}
+
+.title__page {
+    margin: 40px 0px;
+    text-align: center;
+}
+
+.title__page h2 {
+    font-size: 30px;
+}

@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="title__page">
+        <h2>homepage</h2>
+    </div>
+    <div class="grid">
+        {{#each articles}}
+            <div class="item">
+                <h2>{{titre}}</h2>
+                <p>{{description}}</p>
+                <p>Date : {{ moment date format="YYYY-MM-DD"}}</p>
+            </div>
+        {{/each}}
+    </div>
+</div>
