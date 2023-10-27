@@ -7,5 +7,5 @@
 
 ### Passage du monolite au client/serveur 3 tiers :
 - Backend : Go avec le framework Gin pour l'API
-- Frontend : Angular
-- Database : PostgreSQL
+- Frontend : Angular avec Universal pour le rendu côté serveur
+- Database : PostgreSQL avec GORM pour l'ORM

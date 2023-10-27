@@ -1,8 +1,6 @@
 package main
 
 import (
-	// "Draft_API_GO/controllers"
-	// "Draft_API_GO/models"
 	"Draft_API_GO/myapp/database"
 	"Draft_API_GO/myapp/controllers"
 	"log"
