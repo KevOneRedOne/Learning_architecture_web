@@ -1,4 +1,4 @@
-# Learing_architecture_log"
+# Learing_architecture_web
 
 ## Objectif :
 - [x] 1. Apprendre les bases de l'architecture logicielle
