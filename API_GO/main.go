@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
+	"github.com/gin-contrib/cors"
 )
 
 func main() {
@@ -35,7 +36,7 @@ func main() {
 			articles.DELETE("delete/:id", controllers.DeleteArticle)
 		}
 	}
-
+	router.Use(cors.Default())
 	router.Run("127.0.0.1:8080")
 
 	defer database.CloseDataBase()
