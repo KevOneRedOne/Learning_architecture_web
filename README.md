@@ -22,4 +22,4 @@
 - Database : PostgreSQL avec GORM pour l'ORM
 - Backend :
     - Go avec le framework Gin pour l'API
-    - Fatify pour une deuxième api
+    - Fatify pour une deuxième API pour la recherche d'éléments
