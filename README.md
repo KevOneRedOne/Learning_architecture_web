@@ -1,25 +1,35 @@
-# Learing_architecture_web
+# Web Architecture Learning Project
 
-## Objectif :
-- 1. Apprendre les bases de l'architecture web
-- 2. Passer d'une architecture monolite en client/serveur 3 tiers
-    - 2.0. Technologie au choix
-    - 2.1. Créer un serveur web avec Go
-    - 2.2. Créer un client web avec Vue.js
-    - 2.3. Créer une base de données avec PostgreSQL
-- 3. Optimiser l'architecture pour la rendre scalable
-- 4. Passer d'une architecture client/serveur à une architecture en microservices
-    - 4.1 Rajouter une api coté backend avec Fastify
+## Objective
 
-### Passage du monolite au client/serveur 3 tiers :
-- Backend : Go avec le framework Gin pour l'API
-- Frontend : Vue.js avec Nuxt pour le rendu côté serveur
-- Database : PostgreSQL avec GORM pour l'ORM
+The main objective of this project is to provide a practical learning experience about web architecture. It demonstrates the evolution of a web application's architecture, starting from a monolithic client/server 3-tier design and transitioning to a more scalable microservices-based architecture.
 
-### Passage du client/serveur 3 tiers au microservice :
-- Docker : Conteneurisation de chaque service
-- Frontend : Vue.js avec Nuxt pour le rendu côté serveur
-- Database : PostgreSQL avec GORM pour l'ORM
-- Backend :
-    - Go avec le framework Gin pour l'API
-    - Fatify pour une deuxième API pour la recherche d'éléments
+## Technologies Used
+
+- **Backend**:
+  - Server: Go with the Gin framework for the API
+  - Additional API using Fastify for element searching
+
+- **Frontend**:
+  - Web client: Vue.js with Nuxt for server-side rendering
+
+- **Database**:
+  - PostgreSQL with GORM for the Object-Relational Mapping (ORM)
+
+## Project Evolution
+
+### Transition from Monolith to Client/Server 3-Tier
+
+In this initial phase, the project will focus on transforming the existing monolithic architecture into a structured client/server 3-tier architecture. The main components involved are:
+
+- **Backend**: A Go server built with the Gin framework to handle API requests.
+- **Frontend**: Vue.js with Nuxt for server-side rendering.
+- **Database**: PostgreSQL with GORM used for ORM.
+
+### Transition from Client/Server 3-Tier to Microservices
+
+The subsequent phase will involve transitioning from a client/server 3-tier architecture to a more scalable and flexible microservices architecture. Key changes in this phase include:
+
+- **Dockerization**: Each service will be containerized using Docker, allowing for easier deployment and scaling.
+- **Frontend**: The Vue.js with Nuxt setup for server-side rendering remains consistent.
+- **Backend**: Go with the Gin framework for the primary API and Fastify for a secondary API dedicated to element searching.
