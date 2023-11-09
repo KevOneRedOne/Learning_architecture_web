@@ -1,24 +1,20 @@
 <script setup onload>
-  const config = useRuntimeConfig();
-  if (!config.public.api) {
-    console.error('API_PATH is not defined. Please check your environment configuration.');
-    console.log(config.public.api)
-  } else {
-    const { pending, data: articles } = useFetch(`${config.public.api}/articles/`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    });
-
-    console.log(articles);
-  }
+  const apiUrl = `${process.env.API_PATH}`;
+  const { pending, data: articles, error, refresh } = await useFetch(`${apiUrl}/api/v1/articles/`, {
+    onResponse({ request, response, options }) {
+      console.log("[fetch response]", request, response.status, response.body);
+    },
+    onRequestError({ request, error, options }) {
+      console.error("[fetch request error]", request, error);
+    },
+  });
+  const fetchedArticles = await articles?.value;
 </script>
 
 <template>
   <div class="container">
     <div class="grid">
-      <div v-if="!pending" v-for="article in articles" :key="article.id">
+      <div v-if="articles && !pending" v-for="article in fetchedArticles" :key="article.id">
         <div class="item">
           <h2>{{ article.title }}</h2>
           <p>{{ article.description }}</p>

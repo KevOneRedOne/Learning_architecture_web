@@ -11,10 +11,5 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
   },
   css: ['~/assets/css/style.css'],
-  runtimeConfig: {
-    secret: process.env.SECRET,
-    public: {
-      api: process.env.API_PATH,
-    },
-  }
+
 })

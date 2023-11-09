@@ -2,8 +2,7 @@ FROM node:18.12.0-alpine
 
 # update and install dependency
 RUN apk update && apk upgrade
-RUN apk add git
-RUN apk add bash
+RUN apk add --no-cache bash
 
 # create destination directory
 RUN mkdir -p /usr/src/nuxt-app
@@ -20,12 +19,8 @@ RUN npm install
 # Copy the rest of the application code to the working directory
 COPY . /usr/src/nuxt-app/
 
-# Build the application
+# # Build the application
 RUN npm run build
-
-# permission to script bash
-RUN chmod +x /usr/src/nuxt-app/scripts/wait-for-it.sh
-RUN chmod +x /usr/src/nuxt-app/scripts/wait-for-services-api.sh
 
 EXPOSE 3000
 
