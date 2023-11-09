@@ -1,0 +1,69 @@
+version: '3'
+name: m1_custom_app
+networks:
+  my-app-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.21.0.0/16
+          gateway: 172.21.0.1
+services:
+  my-app-postgresql:
+    build: 
+      context: ./my-app-postgresql
+      dockerfile: Dockerfile
+    image: m1_custom_postgresql
+    container_name: m1_custom_postgresql
+    restart: unless-stopped
+    networks:
+      - my-app-network
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./my-app-postgresql/data:/var/lib/postgresql/data2
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    
+  my-app-api_go:
+    build:
+      context: ./my-app-api_go
+      dockerfile: Dockerfile
+    image: m1_custom_api_go
+    container_name: m1_custom_api_go
+    restart: unless-stopped
+    networks:
+      - my-app-network
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/go/src/my-app-api
+    depends_on:
+      - my-app-postgresql
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+
+  my-app:
+    build:
+      context: ./my-app
+      dockerfile: Dockerfile
+    image: m1_custom_my-app
+    container_name: m1_custom_my-app
+    restart: unless-stopped
+    networks:
+      - my-app-network
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - my-app-api_go
+      - my-app-postgresql
+    environment:
+      - API_PATH=${API_PATH}
+    
