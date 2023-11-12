@@ -1,27 +1,24 @@
-<script setup onload>
-  const apiUrl = `${process.env.API_PATH}`;
-  const { pending, data: articles, error, refresh } = await useFetch(`${apiUrl}/api/v1/articles/`, {
-    onResponse({ request, response, options }) {
-      console.log("[fetch response]", request, response.status, response.body);
-    },
-    onRequestError({ request, error, options }) {
-      console.error("[fetch request error]", request, error);
-    },
-  });
-  const fetchedArticles = await articles?.value;
-</script>
-
 <template>
-  <div class="container">
-    <div class="grid">
-      <div v-if="articles && !pending" v-for="article in fetchedArticles" :key="article.id">
-        <div class="item">
-          <h2>{{ article.title }}</h2>
-          <p>{{ article.description }}</p>
-          <p>Date : {{ article.date }}</p>
-        </div>
-      </div>
-      <div v-if="pending">Chargement en cours...</div>
-    </div>
+  <div >
+    <h2>Home page</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ipsam accusantium vel. Vero laudantium quos nam! Quam, cumque saepe! Facere cum iure quos ipsum voluptatum enim consequatur error eos placeat!</p>
+
   </div>
 </template>
+
+<script setup>
+    const config = useRuntimeConfig();
+
+    if (process.server) {
+        console.log("server");
+    } else {
+        console.log("client");
+    }
+    console.log(config.public.baseAPIGo);
+    console.log(config.public.baseAPIFass);
+
+</script>
+
+<style scoped>
+
+</style>
