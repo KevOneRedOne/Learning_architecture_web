@@ -6,19 +6,4 @@
   </div>
 </template>
 
-<script setup>
-    const config = useRuntimeConfig();
 
-    if (process.server) {
-        console.log("server");
-    } else {
-        console.log("client");
-    }
-    console.log(config.public.baseAPIGo);
-    console.log(config.public.baseAPIFass);
-
-</script>
-
-<style scoped>
-
-</style>
