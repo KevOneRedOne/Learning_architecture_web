@@ -47,6 +47,24 @@ services:
       - DB_USER=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
+  
+  my-app-api_fastify:
+    build:
+      context: ./my-app-api_fastify
+      dockerfile: Dockerfile
+    image: m1_custom_api_fastify
+    container_name: m1_custom_api_fastify
+    restart: unless-stopped
+    networks:
+      - my-app-network
+    ports:
+      - "8081:8081"
+    depends_on:
+      - my-app-postgresql
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
 
   my-app:
     build:
@@ -65,5 +83,6 @@ services:
       - my-app-api_go
       - my-app-postgresql
     environment:
-      - API_PATH=${API_PATH}
+      - API_PATH_GO=${API_PATH_GO}
+      - API_PATH_FASS=${API_PATH_FASS}
     
