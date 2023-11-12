@@ -1,0 +1,28 @@
+{
+  "name": "my-app-api_fastity",
+  "version": "1.0.0",
+  "description": "Fastify API REST for microservices",
+  "main": "api.js",
+  "scripts": {
+    "dev": "nodemon ./src/api.js",
+    "start": "node ./src/api.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fastify",
+    "api",
+    "rest",
+    "microservices"
+  ],
+  "author": "KevOneRedOne",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.4.1",
+    "@fastify/postgres": "^5.2.2",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.24.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
