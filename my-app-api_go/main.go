@@ -30,7 +30,7 @@ func main() {
 		articles := apiPath.Group("/articles") 
 		{
 			articles.GET("/", controllers.GetArticles)
-			// articles.GET("/:id", controllers.GetArticleByID(c.Param("id")))
+			articles.GET("/:id", controllers.GetArticleByID)
 			articles.POST("/create", controllers.CreateArticle)
 			articles.PUT("/:id", controllers.UpdateArticle)
 			articles.DELETE("delete/:id", controllers.DeleteArticle)

@@ -21,6 +21,21 @@ func GetArticles(connection *gin.Context) {
 	connection.JSON(http.StatusOK, article)
 }
 
+// GetArticleByID ... Get the article by id
+// CRUD: Read
+func GetArticleByID(connection *gin.Context) {
+	var article []models.Article
+	db := database.GetDataBase()
+
+	id := connection.Param("id")
+
+	if err := db.Where("id = ?", id).First(&article).Error; err != nil {
+		connection.AbortWithStatus(http.StatusNotFound)
+		return
+	}
+	connection.JSON(http.StatusOK, article)
+}
+
 
 // // CreateArticle ... Create article
 // // CRUD: Create
