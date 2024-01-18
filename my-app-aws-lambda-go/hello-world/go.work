@@ -1,0 +1,3 @@
+go 1.21.3
+
+use ./Draft_architecture_web/my-app-aws-lambda-go/hello-world

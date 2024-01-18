@@ -1,13 +1,13 @@
 package main
 
 import (
-	"Draft_API_GO/myapp/database"
 	"Draft_API_GO/myapp/controllers"
+	"Draft_API_GO/myapp/database"
 	"log"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"github.com/gin-contrib/cors"
 )
 
 func main() {
@@ -20,14 +20,17 @@ func main() {
 		log.Fatalf("Erreur lors du chargement du fichier .env : %v", errEnv)
 	}
 
+	// log.Println("Connexion à Redis...")
+	// redis.Init()
+
 	log.Println("Connexion à la base de données...")
 	database.Init()
 
 	router := gin.Default()
-	apiPath := router.Group("/api/v1") 
-	
+	apiPath := router.Group("/api/v1")
+
 	{
-		articles := apiPath.Group("/articles") 
+		articles := apiPath.Group("/articles")
 		{
 			articles.GET("/", controllers.GetArticles)
 			articles.GET("/:id", controllers.GetArticleByID)

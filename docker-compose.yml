@@ -85,4 +85,17 @@ services:
     environment:
       - API_PATH_GO=${API_PATH_GO}
       - API_PATH_FASS=${API_PATH_FASS}
+
+  my-app-redis:
+    build:
+      context: ./my-app-redis
+      dockerfile: Dockerfile
+    image: m1_custom_my-app-redis
+    container_name: m1_custom_my-app-redis
+    restart: unless-stopped
+    networks:
+      - my-app-network
+    ports:
+      - "6379:6379"
+
     
